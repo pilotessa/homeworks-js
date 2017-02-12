@@ -91,7 +91,8 @@ function powerFor(base, exponent) {
 }
 
 /*
- * Напишите функцию power, которая принимает 2 целочисленных аргумента и возвращает возведение первого аргумента в степень второго.
+ * Напишите функцию power, которая принимает 2 целочисленных аргумента и возвращает возведение первого аргумента в
+ * степень второго.
  */
 function task5() {
     var base = +prompt("Введите основание");
@@ -157,7 +158,8 @@ function task6() {
 }
 
 /*
- * Напишите функцию для создания таблицы размером NхM. Такой, чтобы каждая ячейка заполнялась случайной буквой русского алфавита и случайным цветом фона
+ * Напишите функцию для создания таблицы размером NхM. Такой, чтобы каждая ячейка заполнялась случайной буквой русского
+ * алфавита и случайным цветом фона
  */
 function task7() {
     var m = +prompt("Введите количество строк");
@@ -203,7 +205,8 @@ function randLetter() {
 }
 
 /*
- * Напишите функцию showGraph(), которая будет принимать неограниченное количество аргументов (целых чисел) и строить разноцветный график.
+ * Напишите функцию showGraph(), которая будет принимать неограниченное количество аргументов (целых чисел) и строить
+ * разноцветный график.
  */
 function task8() {
     var data = [];
@@ -220,7 +223,7 @@ function task8() {
         data.push(number);
     } while (true);
 
-    console.log(showGraph.apply(null, data));
+    showGraph.apply(null, data);
 }
 
 function showGraph() {
@@ -234,6 +237,59 @@ function showGraph() {
         result += '<div style="display: inline-block; width: ' + POINT_SIZE + 'px; height: ' + arguments[i] * POINT_SCALE + 'px; background-color: ' + CSS_COLOR_NAMES[arguments[i]] + ';"></div>';
     }
     result += '</div>';
+
+    console.log(result);
+}
+
+/*
+ * Вывести таблицу с цветом фона подобным шахматной доске. Код оформить в виде функции, которая будет принимать три
+ * аргумента: fcolor – первый цвет таблицы, scolor – второй цвет ячеек таблицы, contents – массив, содержимое которого
+ * может выводиться в таблице.
+ */
+var CHESS_TABLE_SIZE = 8;
+
+function task9() {
+    var fcolor = prompt("Введите цвет 1");
+    var scolor = prompt("Введите цвет 2");
+    var word = prompt("Введите слово");
+    var result;
+
+    if (word === null || word === '') {
+        result = getChessTable(fcolor, scolor);
+    } else {
+        var contents = [];
+
+        for (var i = 0; i < CHESS_TABLE_SIZE; i++) {
+            contents[i] = [];
+            for (var j = 0; j < CHESS_TABLE_SIZE; j++) {
+                contents[i][j] = word;
+            }
+        }
+
+        result = getChessTable(fcolor, scolor, contents);
+    }
+
+    console.log(result);
+}
+
+function getChessTable(fcolor, scolor, contents) {
+    var result;
+
+    result = '<table>';
+    for (var i = 0; i < CHESS_TABLE_SIZE; i++) {
+        result += '<tr>';
+        for (var j = 0; j < CHESS_TABLE_SIZE; j++) {
+            result += '<td style="background-color: ' + ((i + j ) % 2 ? scolor : fcolor) + ';">';
+            if (typeof contents !== "undefined" && typeof contents[i][j] !== "undefined") {
+                result += contents[i][j];
+            } else {
+                result += '&nbsp;';
+            }
+            result += '</td>';
+        }
+        result += '</tr>';
+    }
+    result += '</table>';
 
     return result;
 }
