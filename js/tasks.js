@@ -294,6 +294,28 @@ function getChessTable(fcolor, scolor, contents) {
     return result;
 }
 
+/*
+ * Написать функцию color(), которая будет генерировать случайный цвет в RGB формате. Проверьте работу функции: в цикле
+ * выведите 10 контейнеров div с разным фоном цвета.
+ */
+function task11() {
+    var div;
+
+    for (var i = 0; i < 10; i++) {
+        div = '<div style="width: 100px; height: 100px; background-color: ' + color() + ';"></div>';
+        console.log(div);
+    }
+}
+
+function color() {
+    var c1 = Math.floor(Math.random() * (256));
+    var c2 = Math.floor(Math.random() * (256));
+    var c3 = Math.floor(Math.random() * (256));
+    var color = 'rgb(' + c1 + ', ' + c2 + ', ' + c3 + ')';
+
+    return color;
+}
+
 // Bind functionality
 $(function () {
     $(".task-runner").click(function () {
