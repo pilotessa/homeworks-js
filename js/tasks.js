@@ -163,14 +163,15 @@ function task7() {
     var m = +prompt("Введите количество строк");
     var n = +prompt("Введите количество столбцов");
 
-    if (Boolean(m) && m % 1 === 0 && Boolean(n) && n % 1 === 0) {
+    if (m && m % 1 === 0 && n && n % 1 === 0) {
         console.log(randTable(m, n));
     }
 }
 
 function randTable(m, n) {
-    var result = '<table>';
+    var result;
 
+    result = '<table>';
     for (var i = 0; i < m; i++) {
         result += '<tr>';
         for (var j = 0; j < n; j++) {
@@ -195,10 +196,46 @@ function randColor() {
 }
 
 function randLetter() {
-    var CYRILLIC_SYMBOLS = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя';
+    var CYRILLIC_SYMBOLS = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя";
     var position = Math.floor(Math.random() * (CYRILLIC_SYMBOLS.length));
 
     return CYRILLIC_SYMBOLS.charAt(position);
+}
+
+/*
+ * Напишите функцию showGraph(), которая будет принимать неограниченное количество аргументов (целых чисел) и строить разноцветный график.
+ */
+function task8() {
+    var data = [];
+    var str;
+    var number;
+
+    do {
+        str = prompt("Введите число");
+
+        if (str === null || str === '' || isNaN(number = +str) || number % 1 !== 0) {
+            break;
+        }
+
+        data.push(number);
+    } while (true);
+
+    console.log(showGraph.apply(null, data));
+}
+
+function showGraph() {
+    var CSS_COLOR_NAMES = ["AliceBlue", "AntiqueWhite", "Aqua", "Aquamarine", "Azure", "Beige", "Bisque", "Black", "BlanchedAlmond", "Blue", "BlueViolet", "Brown", "BurlyWood", "CadetBlue", "Chartreuse", "Chocolate", "Coral", "CornflowerBlue", "Cornsilk", "Crimson", "Cyan", "DarkBlue", "DarkCyan", "DarkGoldenRod", "DarkGray", "DarkGrey", "DarkGreen", "DarkKhaki", "DarkMagenta", "DarkOliveGreen", "Darkorange", "DarkOrchid", "DarkRed", "DarkSalmon", "DarkSeaGreen", "DarkSlateBlue", "DarkSlateGray", "DarkSlateGrey", "DarkTurquoise", "DarkViolet", "DeepPink", "DeepSkyBlue", "DimGray", "DimGrey", "DodgerBlue", "FireBrick", "FloralWhite", "ForestGreen", "Fuchsia", "Gainsboro", "GhostWhite", "Gold", "GoldenRod", "Gray", "Grey", "Green", "GreenYellow", "HoneyDew", "HotPink", "IndianRed", "Indigo", "Ivory", "Khaki", "Lavender", "LavenderBlush", "LawnGreen", "LemonChiffon", "LightBlue", "LightCoral", "LightCyan", "LightGoldenRodYellow", "LightGray", "LightGrey", "LightGreen", "LightPink", "LightSalmon", "LightSeaGreen", "LightSkyBlue", "LightSlateGray", "LightSlateGrey", "LightSteelBlue", "LightYellow", "Lime", "LimeGreen", "Linen", "Magenta", "Maroon", "MediumAquaMarine", "MediumBlue", "MediumOrchid", "MediumPurple", "MediumSeaGreen", "MediumSlateBlue", "MediumSpringGreen", "MediumTurquoise", "MediumVioletRed", "MidnightBlue", "MintCream", "MistyRose", "Moccasin", "NavajoWhite", "Navy", "OldLace", "Olive", "OliveDrab", "Orange", "OrangeRed", "Orchid", "PaleGoldenRod", "PaleGreen", "PaleTurquoise", "PaleVioletRed", "PapayaWhip", "PeachPuff", "Peru", "Pink", "Plum", "PowderBlue", "Purple", "Red", "RosyBrown", "RoyalBlue", "SaddleBrown", "Salmon", "SandyBrown", "SeaGreen", "SeaShell", "Sienna", "Silver", "SkyBlue", "SlateBlue", "SlateGray", "SlateGrey", "Snow", "SpringGreen", "SteelBlue", "Tan", "Teal", "Thistle", "Tomato", "Turquoise", "Violet", "Wheat", "White", "WhiteSmoke", "Yellow", "YellowGreen"];
+    var POINT_SIZE = 10;
+    var POINT_SCALE = 10;
+    var result;
+
+    result = '<div>';
+    for (var i in arguments) {
+        result += '<div style="display: inline-block; width: ' + POINT_SIZE + 'px; height: ' + arguments[i] * POINT_SCALE + 'px; background-color: ' + CSS_COLOR_NAMES[arguments[i]] + ';"></div>';
+    }
+    result += '</div>';
+
+    return result;
 }
 
 // Bind functionality
