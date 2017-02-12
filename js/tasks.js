@@ -105,15 +105,23 @@ function task5() {
  */
 function power(base, exponent) {
     if (typeof base === 'number' && base % 1 === 0 && typeof exponent === 'number' && exponent % 1 === 0) {
-        var result = 1;
-        var exponentAbs = Math.abs(exponent);
+        var result;
 
-        for (var i = 1; i <= exponentAbs; i++) {
-            result *= base;
-        }
-
-        if (exponent < 0) {
-            result = 1 / result;
+        if (base) {
+            if (exponent >= 0) {
+                result = 1;
+                for (var i = 1; i <= exponent; i++) {
+                    result *= base;
+                }
+            } else {
+                result = 1;
+                for (var i = 1; i <= -exponent; i++) {
+                    result *= base;
+                }
+                result = 1 / result;
+            }
+        } else {
+            result = 0;
         }
     } else {
         result = null;
