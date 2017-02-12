@@ -316,6 +316,30 @@ function color() {
     return color;
 }
 
+/*
+ * Напишите функцию showOpacity(), которая бы принимала на вход обычную строку, а возвращала строку, в котором
+ * прозрачность букв менялась от 0 до 1.
+ */
+function task14() {
+    var str = prompt("Введите строку");
+
+    if (str !== null && str !== '') {
+        console.log(showOpacity(str));
+    }
+}
+
+function showOpacity(str) {
+    var opacity;
+    var result = '';
+
+    for (var i = 0; i < str.length; i++) {
+        opacity = Math.floor(Math.random() * 11) / 10;
+        result += '<span style="opacity: ' + opacity + '">' + str.charAt(i) + '</span>';
+    }
+
+    return result;
+}
+
 // Bind functionality
 $(function () {
     $(".task-runner").click(function () {
