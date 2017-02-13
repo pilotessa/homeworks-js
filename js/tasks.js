@@ -8,7 +8,7 @@
  */
 function task1() {
     var MY_NAME = "Елена";
-    var login = prompt("Введите логин");
+    var login = prompt("Введите логин", "");
 
     if (login == MY_NAME) {
         alert("Вход выполнен");
@@ -29,7 +29,7 @@ function task2() {
     var result = 0;
 
     do {
-        number = +prompt("Введите число");
+        number = +prompt("Введите число", "");
         if (!isNaN(number)) {
             result += number;
         }
@@ -95,8 +95,8 @@ function powerFor(base, exponent) {
  * степень второго.
  */
 function task5() {
-    var base = +prompt("Введите основание");
-    var exponent = +prompt("Введите показатель");
+    var base = +prompt("Введите основание", "");
+    var exponent = +prompt("Введите показатель", "");
 
     console.log(power(base, exponent));
 }
@@ -162,8 +162,8 @@ function task6() {
  * алфавита и случайным цветом фона
  */
 function task7() {
-    var m = +prompt("Введите количество строк");
-    var n = +prompt("Введите количество столбцов");
+    var m = +prompt("Введите количество строк", "");
+    var n = +prompt("Введите количество столбцов", "");
 
     if (m && m % 1 === 0 && n && n % 1 === 0) {
         console.log(randTable(m, n));
@@ -214,7 +214,7 @@ function task8() {
     var number;
 
     do {
-        str = prompt("Введите число");
+        str = prompt("Введите число", "");
 
         if (str === null || str === '' || isNaN(number = +str) || number % 1 !== 0) {
             break;
@@ -247,9 +247,9 @@ function showGraph() {
  * может выводиться в таблице.
  */
 function task9() {
-    var fcolor = prompt("Введите цвет 1");
-    var scolor = prompt("Введите цвет 2");
-    var word = prompt("Введите слово");
+    var fcolor = prompt("Введите цвет 1", "");
+    var scolor = prompt("Введите цвет 2", "");
+    var word = prompt("Введите слово", "");
     var result;
 
     if (word === null || word === '') {
@@ -300,9 +300,9 @@ function getChessTable(fcolor, scolor, contents) {
  * (https://ru.wikipedia.org/wiki/%D0%98%D0%BF%D0%BE%D1%82%D0%B5%D0%BA%D0%B0)
  */
 function task10() {
-    var S = +prompt("Введите размер кредита в у.е.");
-    var p = +prompt("Введите процентную ставку за период");
-    var n = +prompt("Введите количество периодов");
+    var S = +prompt("Введите размер кредита в у.е.", "");
+    var p = +prompt("Введите процентную ставку за период", "");
+    var n = +prompt("Введите количество периодов", "");
 
     if (S && !isNaN(S) && p && !isNaN(p) && n && !isNaN(n)) {
         console.log(annuity(S, p, n));
@@ -362,7 +362,7 @@ function task12() {
     }
 
     console.log(arr);
-    for(var k in result) {
+    for (var k in result) {
         console.log(k, result[k]);
     }
 }
@@ -386,7 +386,7 @@ function randArr() {
  * должно выводиться как «сорок пять».
  */
 function task13() {
-    var number = +prompt("Введите число");
+    var number = +prompt("Введите число", "");
 
     if (!isNaN(number) && number % 1 === 0 && number >= 0 && number <= 99) {
         console.log(number.toCyrillicString());
@@ -445,7 +445,7 @@ Number.prototype.toCyrillicString = function () {
  * прозрачность букв менялась от 0 до 1.
  */
 function task14() {
-    var str = prompt("Введите строку");
+    var str = prompt("Введите строку", "");
 
     if (str !== null && str !== '') {
         console.log(showOpacity(str));
