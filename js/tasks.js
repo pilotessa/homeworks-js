@@ -246,8 +246,6 @@ function showGraph() {
  * аргумента: fcolor – первый цвет таблицы, scolor – второй цвет ячеек таблицы, contents – массив, содержимое которого
  * может выводиться в таблице.
  */
-var CHESS_TABLE_SIZE = 8;
-
 function task9() {
     var fcolor = prompt("Введите цвет 1");
     var scolor = prompt("Введите цвет 2");
@@ -272,6 +270,8 @@ function task9() {
     console.log(result);
 }
 
+var CHESS_TABLE_SIZE = 8;
+
 function getChessTable(fcolor, scolor, contents) {
     var result;
 
@@ -290,6 +290,32 @@ function getChessTable(fcolor, scolor, contents) {
         result += '</tr>';
     }
     result += '</table>';
+
+    return result;
+}
+
+/*
+ * Напишите функцию, рассчитывающую размер ипотечного аннуитетного платежа. Функция должна принимать размер кредита в
+ * у.е., процентную ставку за период и количество периодов. Для расчета платежа, воспользуйтесь формулой
+ * (https://ru.wikipedia.org/wiki/%D0%98%D0%BF%D0%BE%D1%82%D0%B5%D0%BA%D0%B0)
+ */
+function task10() {
+    var S = +prompt("Введите размер кредита в у.е.");
+    var p = +prompt("Введите процентную ставку за период");
+    var n = +prompt("Введите количество периодов");
+
+    if (S && !isNaN(S) && p && !isNaN(p) && n && !isNaN(n)) {
+        console.log(annuity(S, p, n));
+    }
+}
+
+/*
+ * S — величина (тело) кредита
+ * p — величина процентной ставки за период (в долях)
+ * n — количество периодов.
+ */
+function annuity(S, p, n) {
+    var result = S * p / (1 - Math.pow((1 + p), -n));
 
     return result;
 }
@@ -315,6 +341,104 @@ function color() {
 
     return color;
 }
+
+/*
+ * Напишите функцию, генерирующую массив с случайным количеством элементов вида «Товар N», где N случайный номер товара.
+ * Выведите на экран количество товаров каждого вида.
+ */
+function task12() {
+    var arr = randArr();
+    var result = {};
+    var value;
+
+    for (var k in arr) {
+        value = arr[k];
+
+        if (value in result) {
+            result[value]++;
+        } else {
+            result[value] = 1;
+        }
+    }
+
+    console.log(arr);
+    for(var k in result) {
+        console.log(k, result[k]);
+    }
+}
+
+function randArr() {
+    var ARR_MAX_LENGTH = 100;
+    var ARR_MAX_N = 10;
+    var length = 1 + Math.floor(Math.random() * ARR_MAX_LENGTH);
+    var N;
+    var arr = [];
+
+    for (var i = 0; i < length; i++) {
+        arr[i] = "Товар " + (1 + Math.floor(Math.random() * ARR_MAX_N));
+    }
+
+    return arr;
+}
+
+/*
+ * Создайте метод у всех числовых объектов, который бы выводил значение числа от 0 до 99 в виде слов. Например число 45
+ * должно выводиться как «сорок пять».
+ */
+function task13() {
+    var number = +prompt("Введите число");
+
+    if (!isNaN(number) && number % 1 === 0 && number >= 0 && number <= 99) {
+        console.log(number.toCyrillicString());
+    }
+}
+
+Number.prototype.toCyrillicString = function () {
+    var CYRILLIC_NUMBERS = {
+        0: "ноль",
+        1: "один",
+        2: "два",
+        3: "три",
+        4: "четыре",
+        5: "пять",
+        6: "шесть",
+        7: "семь",
+        8: "восемь",
+        9: "девять",
+        10: "десять",
+        11: "одиннадцать",
+        12: "двенадцать",
+        13: "тринадцать",
+        14: "четырнадцать",
+        15: "пятнадцать",
+        16: "шестнадцать",
+        17: "семнадцать",
+        18: "восемнадцать",
+        19: "девятнадцать",
+        20: "двадцать",
+        30: "тридцать",
+        40: "сорок",
+        50: "пятьдесят",
+        60: "шестьдесят",
+        70: "семьдесят",
+        80: "восемьдесят",
+        90: "девяносто"
+    };
+    var result;
+
+    if (typeof CYRILLIC_NUMBERS[this] !== "undefined") {
+        result = CYRILLIC_NUMBERS[this];
+    } else {
+        var n1;
+        var n2;
+        n1 = this - (n2 = this % 10);
+        if (typeof CYRILLIC_NUMBERS[n1] !== "undefined" && typeof CYRILLIC_NUMBERS[n2] !== "undefined") {
+            result = CYRILLIC_NUMBERS[n1] + " " + CYRILLIC_NUMBERS[n2];
+        }
+    }
+
+    return result;
+};
 
 /*
  * Напишите функцию showOpacity(), которая бы принимала на вход обычную строку, а возвращала строку, в котором
