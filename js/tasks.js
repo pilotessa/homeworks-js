@@ -158,10 +158,29 @@ function task6() {
 }
 
 /*
+ * Исходный код
+ * var arr = [5, 12];
+ * arr [99] = 7;
+ * var result = [];
+ * Записать в массив result квадраты значений исходного массива arr
+ */
+function task7() {
+    var arr = [5, 12];
+    arr [99] = 7;
+
+    var result = [];
+    for (var i in arr) {
+        result[i] = Math.pow(arr[i], 2);
+    }
+
+    console.log(result);
+}
+
+/*
  * Напишите функцию для создания таблицы размером NхM. Такой, чтобы каждая ячейка заполнялась случайной буквой русского
  * алфавита и случайным цветом фона
  */
-function task7() {
+function task8() {
     var m = +prompt("Введите количество строк", "");
     var n = +prompt("Введите количество столбцов", "");
 
@@ -208,7 +227,7 @@ function randLetter() {
  * Напишите функцию showGraph(), которая будет принимать неограниченное количество аргументов (целых чисел) и строить
  * разноцветный график.
  */
-function task8() {
+function task9() {
     var data = [];
     var str;
     var number;
@@ -246,7 +265,7 @@ function showGraph() {
  * аргумента: fcolor – первый цвет таблицы, scolor – второй цвет ячеек таблицы, contents – массив, содержимое которого
  * может выводиться в таблице.
  */
-function task9() {
+function task10() {
     var fcolor = prompt("Введите цвет 1", "");
     var scolor = prompt("Введите цвет 2", "");
     var word = prompt("Введите слово", "");
@@ -299,7 +318,7 @@ function getChessTable(fcolor, scolor, contents) {
  * у.е., процентную ставку за период и количество периодов. Для расчета платежа, воспользуйтесь формулой
  * (https://ru.wikipedia.org/wiki/%D0%98%D0%BF%D0%BE%D1%82%D0%B5%D0%BA%D0%B0)
  */
-function task10() {
+function task11() {
     var S = +prompt("Введите размер кредита в у.е.", "");
     var p = +prompt("Введите процентную ставку за период", "");
     var n = +prompt("Введите количество периодов", "");
@@ -324,7 +343,7 @@ function annuity(S, p, n) {
  * Написать функцию color(), которая будет генерировать случайный цвет в RGB формате. Проверьте работу функции: в цикле
  * выведите 10 контейнеров div с разным фоном цвета.
  */
-function task11() {
+function task12() {
     var div;
 
     for (var i = 0; i < 10; i++) {
@@ -346,7 +365,7 @@ function color() {
  * Напишите функцию, генерирующую массив с случайным количеством элементов вида «Товар N», где N случайный номер товара.
  * Выведите на экран количество товаров каждого вида.
  */
-function task12() {
+function task13() {
     var arr = randArr();
     var result = {};
     var value;
@@ -385,7 +404,7 @@ function randArr() {
  * Создайте метод у всех числовых объектов, который бы выводил значение числа от 0 до 99 в виде слов. Например число 45
  * должно выводиться как «сорок пять».
  */
-function task13() {
+function task14() {
     var number = +prompt("Введите число", "");
 
     if (!isNaN(number) && number % 1 === 0 && number >= 0 && number <= 99) {
@@ -444,7 +463,7 @@ Number.prototype.toCyrillicString = function () {
  * Напишите функцию showOpacity(), которая бы принимала на вход обычную строку, а возвращала строку, в котором
  * прозрачность букв менялась от 0 до 1.
  */
-function task14() {
+function task15() {
     var str = prompt("Введите строку", "");
 
     if (str !== null && str !== '') {
