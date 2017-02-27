@@ -1,5 +1,8 @@
 'use strict';
 
+var CSS_COLOR_NAMES = ["AliceBlue", "AntiqueWhite", "Aqua", "Aquamarine", "Azure", "Beige", "Bisque", "Black", "BlanchedAlmond", "Blue", "BlueViolet", "Brown", "BurlyWood", "CadetBlue", "Chartreuse", "Chocolate", "Coral", "CornflowerBlue", "Cornsilk", "Crimson", "Cyan", "DarkBlue", "DarkCyan", "DarkGoldenRod", "DarkGray", "DarkGrey", "DarkGreen", "DarkKhaki", "DarkMagenta", "DarkOliveGreen", "Darkorange", "DarkOrchid", "DarkRed", "DarkSalmon", "DarkSeaGreen", "DarkSlateBlue", "DarkSlateGray", "DarkSlateGrey", "DarkTurquoise", "DarkViolet", "DeepPink", "DeepSkyBlue", "DimGray", "DimGrey", "DodgerBlue", "FireBrick", "FloralWhite", "ForestGreen", "Fuchsia", "Gainsboro", "GhostWhite", "Gold", "GoldenRod", "Gray", "Grey", "Green", "GreenYellow", "HoneyDew", "HotPink", "IndianRed", "Indigo", "Ivory", "Khaki", "Lavender", "LavenderBlush", "LawnGreen", "LemonChiffon", "LightBlue", "LightCoral", "LightCyan", "LightGoldenRodYellow", "LightGray", "LightGrey", "LightGreen", "LightPink", "LightSalmon", "LightSeaGreen", "LightSkyBlue", "LightSlateGray", "LightSlateGrey", "LightSteelBlue", "LightYellow", "Lime", "LimeGreen", "Linen", "Magenta", "Maroon", "MediumAquaMarine", "MediumBlue", "MediumOrchid", "MediumPurple", "MediumSeaGreen", "MediumSlateBlue", "MediumSpringGreen", "MediumTurquoise", "MediumVioletRed", "MidnightBlue", "MintCream", "MistyRose", "Moccasin", "NavajoWhite", "Navy", "OldLace", "Olive", "OliveDrab", "Orange", "OrangeRed", "Orchid", "PaleGoldenRod", "PaleGreen", "PaleTurquoise", "PaleVioletRed", "PapayaWhip", "PeachPuff", "Peru", "Pink", "Plum", "PowderBlue", "Purple", "Red", "RosyBrown", "RoyalBlue", "SaddleBrown", "Salmon", "SandyBrown", "SeaGreen", "SeaShell", "Sienna", "Silver", "SkyBlue", "SlateBlue", "SlateGray", "SlateGrey", "Snow", "SpringGreen", "SteelBlue", "Tan", "Teal", "Thistle", "Tomato", "Turquoise", "Violet", "Wheat", "White", "WhiteSmoke", "Yellow", "YellowGreen"];
+var CYRILLIC_SYMBOLS = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+
 /*
  * 1. Выведите запрос на ввод логина через prompt.
  * 2. Если будет введено Ваше имя - вывести alter “Вход выполнен”.
@@ -12,7 +15,7 @@ function task1() {
 
     if (login == MY_NAME) {
         alert("Вход выполнен");
-    } else if (Boolean(login)) {
+    } else if (login) {
         alert("Неверный пользователь");
         console.log(login);
     } else {
@@ -33,9 +36,9 @@ function task2() {
         if (!isNaN(number)) {
             result += number;
         }
-    } while (number);
+    } while (confirm("Следующее число?"));
 
-    alert(result);
+    alert("Сумма чисел: " + result);
 }
 
 /*
@@ -50,7 +53,7 @@ function task3() {
  * exponent - целое неотрицательное число
  */
 function powerWhile(base, exponent) {
-    if (typeof base === 'number' && base % 1 === 0 && typeof exponent === 'number' && exponent % 1 === 0 && exponent >= 0) {
+    if (Number.isInteger(base) && Number.isInteger(exponent) && exponent >= 0) {
         var result = 1;
         var i = 0;
 
@@ -77,7 +80,7 @@ function task4() {
  * exponent - целое неотрицательное число
  */
 function powerFor(base, exponent) {
-    if (typeof base === 'number' && base % 1 === 0 && typeof exponent === 'number' && exponent % 1 === 0 && exponent >= 0) {
+    if (Number.isInteger(base) && Number.isInteger(exponent) && exponent >= 0) {
         var result = 1;
 
         for (var i = 1; i <= exponent; i++) {
@@ -105,27 +108,23 @@ function task5() {
  * base, exponent - целые числа
  */
 function power(base, exponent) {
-    if (typeof base === 'number' && base % 1 === 0 && typeof exponent === 'number' && exponent % 1 === 0) {
-        var result;
+    if (!Number.isInteger(base) || !Number.isInteger(exponent)) {
+        return null;
+    }
 
-        if (base) {
-            if (exponent >= 0) {
-                result = 1;
-                for (var i = 1; i <= exponent; i++) {
-                    result *= base;
-                }
-            } else {
-                result = 1;
-                for (var i = 1; i <= -exponent; i++) {
-                    result *= base;
-                }
-                result = 1 / result;
-            }
-        } else {
-            result = 0;
-        }
-    } else {
-        result = null;
+    if (base === 0) {
+        return 0;
+    }
+
+    var result = 1,
+        exponentAbs = Math.abs(exponent);
+
+    for (var i = 1; i <= exponentAbs; i++) {
+        result *= base;
+    }
+
+    if (exponent < 0) {
+        result = 1 / result;
     }
 
     return result;
@@ -137,24 +136,27 @@ function power(base, exponent) {
  * 3. Выведите свойства каждого из объекта в консоль с помощью цикла.
  */
 function task6() {
-    var book1 = {};
-    var book2 = {};
+    function Book() {
+        this.title = prompt("Введите заголовок", "");
+        this.publishedYear = prompt("Введите год публикации", "");
+        this.year = prompt("Введите год", "");
 
-    book1.title = prompt("Введите заголовок", "");
-    book1.publishedYear = prompt("Введите год публикации", "");
-    book1.year = prompt("Введите год", "");
-    book2.title = prompt("Введите заголовок", "");
-    book2.publishedYear = prompt("Введите год публикации", "");
-    book2.year = prompt("Введите год", "");
+        this.printInfo = function () {
+            for (var key in this) {
+                if (typeof this[key] !== "function") {
+                    console.log(key + ": " + this[key]);
+                }
+            }
+        }
+    }
+
+    var book1 = new Book();
+    var book2 = new Book();
 
     console.log("book1");
-    for (var key in book1) {
-        console.log(key + ": " + book1[key]);
-    }
+    book1.printInfo();
     console.log("book2");
-    for (var key in book2) {
-        console.log(key + ": " + book2[key]);
-    }
+    book2.printInfo();
 }
 
 /*
@@ -180,12 +182,15 @@ function task7() {
  * Напишите функцию для создания таблицы размером NхM. Такой, чтобы каждая ячейка заполнялась случайной буквой русского
  * алфавита и случайным цветом фона
  */
+
 function task8() {
     var m = +prompt("Введите количество строк", "");
     var n = +prompt("Введите количество столбцов", "");
 
-    if (m && m % 1 === 0 && n && n % 1 === 0) {
+    if (m && Number.isInteger(m) && n && Number.isInteger(n)) {
         console.log(randTable(m, n));
+    } else {
+        console.log("Wrong input");
     }
 }
 
@@ -206,54 +211,48 @@ function randTable(m, n) {
 }
 
 function randCell() {
-    return '<td style="background-color: ' + randColor() + '">' + randLetter() + '</td>';
+    return '<td style="background-color: ' + randItemFromArray(CSS_COLOR_NAMES) + '">' + randItemFromArray(CYRILLIC_SYMBOLS) + '</td>';
 }
 
-function randColor() {
-    var CSS_COLOR_NAMES = ["AliceBlue", "AntiqueWhite", "Aqua", "Aquamarine", "Azure", "Beige", "Bisque", "Black", "BlanchedAlmond", "Blue", "BlueViolet", "Brown", "BurlyWood", "CadetBlue", "Chartreuse", "Chocolate", "Coral", "CornflowerBlue", "Cornsilk", "Crimson", "Cyan", "DarkBlue", "DarkCyan", "DarkGoldenRod", "DarkGray", "DarkGrey", "DarkGreen", "DarkKhaki", "DarkMagenta", "DarkOliveGreen", "Darkorange", "DarkOrchid", "DarkRed", "DarkSalmon", "DarkSeaGreen", "DarkSlateBlue", "DarkSlateGray", "DarkSlateGrey", "DarkTurquoise", "DarkViolet", "DeepPink", "DeepSkyBlue", "DimGray", "DimGrey", "DodgerBlue", "FireBrick", "FloralWhite", "ForestGreen", "Fuchsia", "Gainsboro", "GhostWhite", "Gold", "GoldenRod", "Gray", "Grey", "Green", "GreenYellow", "HoneyDew", "HotPink", "IndianRed", "Indigo", "Ivory", "Khaki", "Lavender", "LavenderBlush", "LawnGreen", "LemonChiffon", "LightBlue", "LightCoral", "LightCyan", "LightGoldenRodYellow", "LightGray", "LightGrey", "LightGreen", "LightPink", "LightSalmon", "LightSeaGreen", "LightSkyBlue", "LightSlateGray", "LightSlateGrey", "LightSteelBlue", "LightYellow", "Lime", "LimeGreen", "Linen", "Magenta", "Maroon", "MediumAquaMarine", "MediumBlue", "MediumOrchid", "MediumPurple", "MediumSeaGreen", "MediumSlateBlue", "MediumSpringGreen", "MediumTurquoise", "MediumVioletRed", "MidnightBlue", "MintCream", "MistyRose", "Moccasin", "NavajoWhite", "Navy", "OldLace", "Olive", "OliveDrab", "Orange", "OrangeRed", "Orchid", "PaleGoldenRod", "PaleGreen", "PaleTurquoise", "PaleVioletRed", "PapayaWhip", "PeachPuff", "Peru", "Pink", "Plum", "PowderBlue", "Purple", "Red", "RosyBrown", "RoyalBlue", "SaddleBrown", "Salmon", "SandyBrown", "SeaGreen", "SeaShell", "Sienna", "Silver", "SkyBlue", "SlateBlue", "SlateGray", "SlateGrey", "Snow", "SpringGreen", "SteelBlue", "Tan", "Teal", "Thistle", "Tomato", "Turquoise", "Violet", "Wheat", "White", "WhiteSmoke", "Yellow", "YellowGreen"];
-    var position = Math.floor(Math.random() * (CSS_COLOR_NAMES.length));
-
-    return CSS_COLOR_NAMES[position];
-}
-
-function randLetter() {
-    var CYRILLIC_SYMBOLS = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя";
-    var position = Math.floor(Math.random() * (CYRILLIC_SYMBOLS.length));
-
-    return CYRILLIC_SYMBOLS.charAt(position);
+function randItemFromArray(arrayItems) {
+    var position = Math.floor(Math.random() * (arrayItems.length));
+    return arrayItems[position];
 }
 
 /*
  * Напишите функцию showGraph(), которая будет принимать неограниченное количество аргументов (целых чисел) и строить
  * разноцветный график.
  */
+var POINT_SIZE = 10;
+var POINT_SCALE = 10;
+
 function task9() {
-    var data = [];
-    var str;
-    var number;
+    var data = [],
+        str,
+        number,
+        stopDataInput = false;
 
     do {
         str = prompt("Введите число", "");
+        number = str && str.trim() ? +str : NaN;
 
-        if (str === null || str === '' || isNaN(number = +str) || number % 1 !== 0) {
-            break;
+        if (Number.isInteger(number)) {
+            data.push(number);
+        } else {
+            stopDataInput = true;
         }
-
-        data.push(number);
-    } while (true);
+    } while (!stopDataInput);
 
     showGraph.apply(null, data);
 }
 
 function showGraph() {
-    var CSS_COLOR_NAMES = ["AliceBlue", "AntiqueWhite", "Aqua", "Aquamarine", "Azure", "Beige", "Bisque", "Black", "BlanchedAlmond", "Blue", "BlueViolet", "Brown", "BurlyWood", "CadetBlue", "Chartreuse", "Chocolate", "Coral", "CornflowerBlue", "Cornsilk", "Crimson", "Cyan", "DarkBlue", "DarkCyan", "DarkGoldenRod", "DarkGray", "DarkGrey", "DarkGreen", "DarkKhaki", "DarkMagenta", "DarkOliveGreen", "Darkorange", "DarkOrchid", "DarkRed", "DarkSalmon", "DarkSeaGreen", "DarkSlateBlue", "DarkSlateGray", "DarkSlateGrey", "DarkTurquoise", "DarkViolet", "DeepPink", "DeepSkyBlue", "DimGray", "DimGrey", "DodgerBlue", "FireBrick", "FloralWhite", "ForestGreen", "Fuchsia", "Gainsboro", "GhostWhite", "Gold", "GoldenRod", "Gray", "Grey", "Green", "GreenYellow", "HoneyDew", "HotPink", "IndianRed", "Indigo", "Ivory", "Khaki", "Lavender", "LavenderBlush", "LawnGreen", "LemonChiffon", "LightBlue", "LightCoral", "LightCyan", "LightGoldenRodYellow", "LightGray", "LightGrey", "LightGreen", "LightPink", "LightSalmon", "LightSeaGreen", "LightSkyBlue", "LightSlateGray", "LightSlateGrey", "LightSteelBlue", "LightYellow", "Lime", "LimeGreen", "Linen", "Magenta", "Maroon", "MediumAquaMarine", "MediumBlue", "MediumOrchid", "MediumPurple", "MediumSeaGreen", "MediumSlateBlue", "MediumSpringGreen", "MediumTurquoise", "MediumVioletRed", "MidnightBlue", "MintCream", "MistyRose", "Moccasin", "NavajoWhite", "Navy", "OldLace", "Olive", "OliveDrab", "Orange", "OrangeRed", "Orchid", "PaleGoldenRod", "PaleGreen", "PaleTurquoise", "PaleVioletRed", "PapayaWhip", "PeachPuff", "Peru", "Pink", "Plum", "PowderBlue", "Purple", "Red", "RosyBrown", "RoyalBlue", "SaddleBrown", "Salmon", "SandyBrown", "SeaGreen", "SeaShell", "Sienna", "Silver", "SkyBlue", "SlateBlue", "SlateGray", "SlateGrey", "Snow", "SpringGreen", "SteelBlue", "Tan", "Teal", "Thistle", "Tomato", "Turquoise", "Violet", "Wheat", "White", "WhiteSmoke", "Yellow", "YellowGreen"];
-    var POINT_SIZE = 10;
-    var POINT_SCALE = 10;
     var result;
 
     result = '<div>';
     for (var i in arguments) {
-        result += '<div style="display: inline-block; width: ' + POINT_SIZE + 'px; height: ' + arguments[i] * POINT_SCALE + 'px; background-color: ' + CSS_COLOR_NAMES[arguments[i]] + ';"></div>';
+        var currentPoint = arguments[i];
+        result += '<div style="display: inline-block; width: ' + POINT_SIZE + 'px; height: ' + currentPoint * POINT_SCALE + 'px; background-color: ' + CSS_COLOR_NAMES[currentPoint] + ';"></div>';
     }
     result += '</div>';
 
@@ -265,15 +264,15 @@ function showGraph() {
  * аргумента: fcolor – первый цвет таблицы, scolor – второй цвет ячеек таблицы, contents – массив, содержимое которого
  * может выводиться в таблице.
  */
+var CHESS_TABLE_SIZE = 8;
+
 function task10() {
     var fcolor = prompt("Введите цвет 1", "");
     var scolor = prompt("Введите цвет 2", "");
     var word = prompt("Введите слово", "");
     var result;
 
-    if (word === null || word === '') {
-        result = getChessTable(fcolor, scolor);
-    } else {
+    if (word) {
         var contents = [];
 
         for (var i = 0; i < CHESS_TABLE_SIZE; i++) {
@@ -284,12 +283,12 @@ function task10() {
         }
 
         result = getChessTable(fcolor, scolor, contents);
+    } else {
+        result = getChessTable(fcolor, scolor);
     }
 
     console.log(result);
 }
-
-var CHESS_TABLE_SIZE = 8;
 
 function getChessTable(fcolor, scolor, contents) {
     var result;
@@ -298,13 +297,8 @@ function getChessTable(fcolor, scolor, contents) {
     for (var i = 0; i < CHESS_TABLE_SIZE; i++) {
         result += '<tr>';
         for (var j = 0; j < CHESS_TABLE_SIZE; j++) {
-            result += '<td style="background-color: ' + ((i + j ) % 2 ? scolor : fcolor) + ';">';
-            if (typeof contents !== "undefined" && typeof contents[i][j] !== "undefined") {
-                result += contents[i][j];
-            } else {
-                result += '&nbsp;';
-            }
-            result += '</td>';
+            var cellContent = contents && contents[i][j] ? contents[i][j] : '&nbsp;';
+            result += '<td style="background-color: ' + ((i + j) % 2 ? scolor : fcolor) + ';">' + cellContent + '</td>';
         }
         result += '</tr>';
     }
@@ -365,6 +359,9 @@ function color() {
  * Напишите функцию, генерирующую массив с случайным количеством элементов вида «Товар N», где N случайный номер товара.
  * Выведите на экран количество товаров каждого вида.
  */
+var ARR_MAX_LENGTH = 100;
+var ARR_MAX_N = 10;
+
 function task13() {
     var arr = randArr();
     var result = {};
@@ -387,10 +384,7 @@ function task13() {
 }
 
 function randArr() {
-    var ARR_MAX_LENGTH = 100;
-    var ARR_MAX_N = 10;
     var length = 1 + Math.floor(Math.random() * ARR_MAX_LENGTH);
-    var N;
     var arr = [];
 
     for (var i = 0; i < length; i++) {
@@ -406,13 +400,10 @@ function randArr() {
  */
 function task14() {
     var number = +prompt("Введите число", "");
-
-    if (!isNaN(number) && number % 1 === 0 && number >= 0 && number <= 99) {
-        console.log(number.toCyrillicString());
-    }
+    console.log(toCyrillicString(number));
 }
 
-Number.prototype.toCyrillicString = function () {
+function toCyrillicString(number) {
     var CYRILLIC_NUMBERS = {
         0: "ноль",
         1: "один",
@@ -445,19 +436,22 @@ Number.prototype.toCyrillicString = function () {
     };
     var result;
 
-    if (typeof CYRILLIC_NUMBERS[this] !== "undefined") {
-        result = CYRILLIC_NUMBERS[this];
+    if (!Number.isInteger(number) || number < 0 || number >= 100) {
+        return null;
+    }
+
+    if (CYRILLIC_NUMBERS[number] !== undefined) {
+        result = CYRILLIC_NUMBERS[number];
     } else {
-        var n1;
-        var n2;
-        n1 = this - (n2 = this % 10);
-        if (typeof CYRILLIC_NUMBERS[n1] !== "undefined" && typeof CYRILLIC_NUMBERS[n2] !== "undefined") {
-            result = CYRILLIC_NUMBERS[n1] + " " + CYRILLIC_NUMBERS[n2];
+        var units = number % 10,
+            tens = number - units;
+        if (CYRILLIC_NUMBERS[tens] !== undefined && CYRILLIC_NUMBERS[units] !== undefined) {
+            result = CYRILLIC_NUMBERS[tens] + " " + CYRILLIC_NUMBERS[units];
         }
     }
 
     return result;
-};
+}
 
 /*
  * Напишите функцию showOpacity(), которая бы принимала на вход обычную строку, а возвращала строку, в котором
@@ -466,7 +460,7 @@ Number.prototype.toCyrillicString = function () {
 function task15() {
     var str = prompt("Введите строку", "");
 
-    if (str !== null && str !== '') {
+    if (str) {
         console.log(showOpacity(str));
     }
 }
