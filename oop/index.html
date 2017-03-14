@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Основы ООП | JavaScript Homeworks</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+    <link href="../assets/css/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="../assets/css/main.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li><a href="../index.html">JavaScript Homeworks</a></li>
+        <li class="active">Основы ООП</li>
+    </ol>
+
+    <header class="page-header">
+        <h1>Основы ООП</h1>
+    </header>
+
+    <div class="lead">
+        <p>Необходимо:</p>
+        <ul>
+            <li>Проанализировать требования и выделить основные сущности (UML -> Class Diagram);</li>
+            <li>Отобразить данные взаимоотношения с помощью Entity-Relationship Diagram (ERD);</li>
+            <li>Описать сущности на JS (потренироваться с реализацией ООП в JS).</li>
+        </ul>
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-md-6 col-lg-4 text-center">
+            <p>
+                <a href="images/SocialLibraryClasses.png" data-fancybox>
+                    <img src="images/SocialLibraryClasses.png" alt="Class Diagram" class="img-responsive img-thumbnail">
+                </a>
+
+                <br>
+                <br>
+
+                <em>Class Diagram</em>
+            </p>
+
+            <br>
+
+            <p>
+                <a href="images/SocialLibraryDb.png" data-fancybox>
+                    <img src="images/SocialLibraryDb.png" alt="Enity-Relationship Diagram"
+                         class="img-responsive img-thumbnail">
+                </a>
+
+                <br>
+                <br>
+
+                <em>Entity-Relationship Diagram</em>
+            </p>
+
+            <br>
+        </div>
+        <div class="col-md-6 col-lg-8">
+            <pre>
+            </pre>
+
+            <br>
+        </div>
+    </div>
+
+    <footer>
+        <hr>
+        <p>&copy; 2016-2017 <a href="http://helene.com.ua" target="_blank">Елена Мухина</a></p>
+    </footer>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+<script src="../assets/js/jquery.fancybox.min.js"></script>
+<script src="js/classes.js"></script>
+<script>
+    $(document).ready(function () {
+        $.get('js/classes.js', function (data, status) {
+            $('pre').html(data);
+        });
+    });
+</script>
+
+</body>
+</html>
