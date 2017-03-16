@@ -33,19 +33,34 @@
         <h1>Основы ООП</h1>
     </header>
 
+    <h3>
+        Проект "Социальная библиотека"
+    </h3>
+
+    <br>
+
     <div class="lead">
-        <p>Необходимо:</p>
+        <p><strong>Основные задачи:</strong></p>
         <ul>
-            <li>Проанализировать требования и выделить основные сущности (UML -> Class Diagram);</li>
-            <li>Отобразить данные взаимоотношения с помощью Entity-Relationship Diagram (ERD);</li>
-            <li>Описать сущности на JS (потренироваться с реализацией ООП в JS).</li>
+            <li>хранение информации о прочитанных книгах;</li>
+            <li>обмен отзывами с другими пользователями;</li>
+            <li>отслеживание новых поступлений.</li>
+        </ul>
+
+        <br>
+
+        <p><strong>Необходимо:</strong></p>
+        <ul>
+            <li>проанализировать требования и выделить основные сущности (UML -> Class Diagram);</li>
+            <li>отобразить данные взаимоотношения с помощью Entity-Relationship Diagram (ERD);</li>
+            <li>описать сущности на JS (потренироваться с реализацией ООП в JS).</li>
         </ul>
     </div>
 
     <br>
 
     <div class="row">
-        <div class="col-md-6 col-lg-4 text-center">
+        <div class="col-md-6 text-center">
             <p>
                 <a href="images/SocialLibraryClasses.png" data-fancybox>
                     <img src="images/SocialLibraryClasses.png" alt="Class Diagram" class="img-responsive img-thumbnail">
@@ -73,9 +88,105 @@
 
             <br>
         </div>
-        <div class="col-md-6 col-lg-8">
-            <pre>
-            </pre>
+        <div class="col-md-6">
+            <p>
+                <a class="btn btn-default btn-block" data-toggle="collapse" href="#bookCodeWrapper"
+                   style="text-align: left;">
+                    <strong>Book</strong>
+                    <span class="caret"></span>
+                </a>
+            </p>
+            <div id="bookCodeWrapper" class="collapse in">
+                <pre><code id="bookCode" class="javascript"></code></pre>
+            </div>
+
+            <p>
+                <a class="btn btn-default btn-block" data-toggle="collapse" href="#userCodeWrapper"
+                   style="text-align: left;">
+                    <strong>User</strong>
+                    <span class="caret"></span>
+                </a>
+            </p>
+            <div id="userCodeWrapper" class="collapse">
+                <pre><code id="userCode" class="javascript"></code></pre>
+            </div>
+
+            <p>
+                <a class="btn btn-default btn-block" data-toggle="collapse" href="#userBookCodeWrapper"
+                   style="text-align: left;">
+                    <strong>UserBook</strong>
+                    <span class="caret"></span>
+                </a>
+            </p>
+            <div id="userBookCodeWrapper" class="collapse">
+                <pre><code id="userBookCode" class="javascript"></code></pre>
+            </div>
+
+            <p>
+                <a class="btn btn-default btn-block" data-toggle="collapse" href="#roleCodeWrapper"
+                   style="text-align: left;">
+                    <strong>Role</strong>
+                    <span class="caret"></span>
+                </a>
+            </p>
+            <div id="roleCodeWrapper" class="collapse">
+                <pre><code id="roleCode" class="javascript"></code></pre>
+            </div>
+
+            <p>
+                <a class="btn btn-default btn-block" data-toggle="collapse" href="#capabilityCodeWrapper"
+                   style="text-align: left;">
+                    <strong>Capability</strong>
+                    <span class="caret"></span>
+                </a>
+            </p>
+            <div id="capabilityCodeWrapper" class="collapse">
+                <pre><code id="capabilityCode" class="javascript"></code></pre>
+            </div>
+
+            <p>
+                <a class="btn btn-default btn-block" data-toggle="collapse" href="#authorCodeWrapper"
+                   style="text-align: left;">
+                    <strong>Author</strong>
+                    <span class="caret"></span>
+                </a>
+            </p>
+            <div id="authorCodeWrapper" class="collapse">
+                <pre><code id="authorCode" class="javascript"></code></pre>
+            </div>
+
+            <p>
+                <a class="btn btn-default btn-block" data-toggle="collapse" href="#genreCodeWrapper"
+                   style="text-align: left;">
+                    <strong>Genre</strong>
+                    <span class="caret"></span>
+                </a>
+            </p>
+            <div id="genreCodeWrapper" class="collapse">
+                <pre><code id="genreCode" class="javascript"></code></pre>
+            </div>
+
+            <p>
+                <a class="btn btn-default btn-block" data-toggle="collapse" href="#ratingCodeWrapper"
+                   style="text-align: left;">
+                    <strong>Rating</strong>
+                    <span class="caret"></span>
+                </a>
+            </p>
+            <div id="ratingCodeWrapper" class="collapse">
+                <pre><code id="ratingCode" class="javascript"></code></pre>
+            </div>
+
+            <p>
+                <a class="btn btn-default btn-block" data-toggle="collapse" href="#sampleCodeWrapper"
+                   style="text-align: left;">
+                    <strong>Пример работы с классами</strong>
+                    <span class="caret"></span>
+                </a>
+            </p>
+            <div id="sampleCodeWrapper" class="collapse">
+                <pre><code id="sampleCode" class="javascript"></code></pre>
+            </div>
 
             <br>
         </div>
@@ -94,12 +205,53 @@
         crossorigin="anonymous"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
 <script src="../assets/js/jquery.fancybox.min.js"></script>
-<script src="js/classes.js"></script>
+<script src="js/Classes/Book.js"></script>
+<script src="js/Classes/User.js"></script>
+<script src="js/Classes/UserBook.js"></script>
+<script src="js/Classes/Role.js"></script>
+<script src="js/Classes/Capability.js"></script>
+<script src="js/Classes/Author.js"></script>
+<script src="js/Classes/Genre.js"></script>
+<script src="js/Classes/Rating.js"></script>
+<script src="js/sample.js"></script>
 <script>
     $(document).ready(function () {
-        $.get('js/classes.js', function (data, status) {
-            $('pre').html(data);
-        });
+        $.get('js/Classes/Book.js', function (data, status) {
+            $('#bookCode').html(data);
+            hljs.highlightBlock($('#bookCode').parent()[0]);
+        }, 'text');
+        $.get('js/Classes/User.js', function (data, status) {
+            $('#userCode').html(data);
+            hljs.highlightBlock($('#userCode').parent()[0]);
+        }, 'text');
+        $.get('js/Classes/UserBook.js', function (data, status) {
+            $('#userBookCode').html(data);
+            hljs.highlightBlock($('#userBookCode').parent()[0]);
+        }, 'text');
+        $.get('js/Classes/Role.js', function (data, status) {
+            $('#roleCode').html(data);
+            hljs.highlightBlock($('#roleCode').parent()[0]);
+        }, 'text');
+        $.get('js/Classes/Capability.js', function (data, status) {
+            $('#capabilityCode').html(data);
+            hljs.highlightBlock($('#capabilityCode').parent()[0]);
+        }, 'text');
+        $.get('js/Classes/Author.js', function (data, status) {
+            $('#authorCode').html(data);
+            hljs.highlightBlock($('#authorCode').parent()[0]);
+        }, 'text');
+        $.get('js/Classes/Genre.js', function (data, status) {
+            $('#genreCode').html(data);
+            hljs.highlightBlock($('#genreCode').parent()[0]);
+        }, 'text');
+        $.get('js/Classes/Rating.js', function (data, status) {
+            $('#ratingCode').html(data);
+            hljs.highlightBlock($('#ratingCode').parent()[0]);
+        }, 'text');
+        $.get('js/sample.js', function (data, status) {
+            $('#sampleCode').html(data);
+            hljs.highlightBlock($('#sampleCode').parent()[0]);
+        }, 'text');
     });
 </script>
 
