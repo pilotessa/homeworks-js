@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DOM / BOM / JS | JavaScript Homeworks</title>
+
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/list.css">
+</head>
+<body>
+
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li><a href="../index.html">JavaScript Homeworks</a></li>
+        <li class="active">DOM / BOM / JS</li>
+    </ol>
+
+    <header class="page-header">
+        <h1>DOM / BOM / JS и их связь</h1>
+    </header>
+
+    <div class="lead">
+        <p>Разработать небольшой сайтик под названием "Todo List".</p>
+        <p>Пользователь может создавать новые задания (по-умолчанию в активном состоянии), отмечать их выполненными или
+            вернуть в исходное состояние (активные).</p>
+        <p>Пользователь может удалять элементы из списка, фильтровать по "выполненные", "активные", "все".</p>
+        <p>Так же предоставить возможность пользователю выбрать некоторые из элементов в списке и произвести с ними
+            операции:</p>
+        <ul>
+            <li>Удалить все</li>
+            <li>Отметить выполненными</li>
+            <li>Отметить активными</li>
+        </ul>
+        <p>Предоставить возможность сохранения выбранного фильтра при копировании ссылки и вставки в новое окно
+            браузера.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h2 class="text-center">ToDo List</h2>
+            <ul id="list"></ul>
+        </div>
+    </div>
+
+    <footer>
+        <hr>
+        <p>&copy; 2016-2017 <a href="http://helene.com.ua" target="_blank">Елена Мухина</a></p>
+    </footer>
+
+</div>
+
+<script src="js/List.js"></script>
+<script src="js/Item.js"></script>
+<script>
+    new List('list');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+.todo-list-header .form-control {
+    display: inline-block;
+    width: calc(100% - 40px);
+}
+
+.todo-list-item label {
+    max-width: 75%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 25px;
+    margin-bottom: 0;
+}
+
+.todo-list .btn {
+    box-shadow: none;
+    outline: none !important;
+    margin-left: 5px;
+}
+
+.todo-list-item.list-group-item-warning .todo-list-item__mark-as-active {
+    display: none;
+}
+
+.todo-list-item.list-group-item-success .todo-list-item__mark-as-complete {
+    display: none;
+}
+
+.todo-list-footer {
+    display: none;
+}
+
+.todo-list-item + .todo-list-footer {
+    display: block;
+}
+
+.todo-list.todo-list-filter-active .todo-list-item.list-group-item-success {
+    display: none;
+}
+
+.todo-list.todo-list-filter-complete .todo-list-item.list-group-item-warning {
+    display: none;
+}
