@@ -1,10 +1,8 @@
 Vue.component('List', {
     data: function () {
         return {
-            items: [
-                {title: 'Item 1', active: true, checked: false},
-                {title: 'Item 2', active: false, checked: false}
-            ],
+            key: 'todo',
+            items: [],
             titleNew: '',
             itemEdit: {
                 title: ''
@@ -32,14 +30,20 @@ Vue.component('List', {
         addItem: function () {
             this.items.push({title: this.titleNew, active: true, checked: false});
             this.titleNew = '';
+
+            this.saveData();
         },
 
         removeItem: function (index) {
             this.items.splice(index, 1);
+
+            this.saveData();
         },
 
         toggleItem: function (item) {
             item.active = !item.active;
+
+            this.saveData();
         },
 
         editStart: function (item) {
@@ -51,6 +55,8 @@ Vue.component('List', {
             this.itemEdit = {
                 title: ''
             };
+
+            this.saveData();
         },
 
         editCancel: function (item) {
@@ -96,6 +102,28 @@ Vue.component('List', {
             }
 
             this.actionCurrent = '';
+
+            this.saveData();
+        },
+
+        saveData: function() {
+            localStorage.setItem(this.key, JSON.stringify(this.items));
+        },
+
+        loadData: function() {
+            this.items = JSON.parse(localStorage.getItem(this.key)) || [];
+        }
+    },
+
+    created: function () {
+        this.loadData();
+    },
+
+    directives: {
+        'list-focus': function (el, value) {
+            if (value) {
+                el.focus()
+            }
         }
     },
 
@@ -103,7 +131,7 @@ Vue.component('List', {
         <ul :class="filterClass" class="todo-list list-group">
             <li class="todo-list-header list-group-item active">
                 <form @submit.prevent="addItem">
-                    <input v-model.lazy="titleNew" type="text" class="form-control input-sm" placeholder="What needs to be done?">
+                    <input v-model.lazy="titleNew" type="text" class="form-control input-sm" placeholder="What needs to be done?" autofocus>
                 </form>
             </li>
             <li v-for="(item, index) in items" class="todo-list-item list-group-item" :class="{'list-group-item-warning': item.active, 'list-group-item-success': !item.active}">
@@ -112,7 +140,7 @@ Vue.component('List', {
                     <span @click.prevent="removeItem(index)" class="glyphicon glyphicon-remove"></span>
                     <span @click.prevent="toggleItem(item)" :class="{'glyphicon-ok': item.active, 'glyphicon-repeat': !item.active}" class="glyphicon"></span>
                 </div>
-                <input v-show="item == itemEdit" v-model="itemEdit.title" @keyup.enter="editFinish" @keyup.esc="editCancel(item)" type="text" class="form-control input-sm">
+                <input v-show="item == itemEdit" v-list-focus="item == itemEdit" v-model="itemEdit.title" @keyup.enter="editFinish" @keyup.esc="editCancel(item)" type="text" class="form-control input-sm">
             </li>
             <li v-show="items.length" class="todo-list-footer list-group-item active form-inline">
                 With selected:
