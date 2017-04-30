@@ -18,10 +18,19 @@ function List(id) {
         }
 
         this.container.getElementsByClassName('todo-list-new-item-title')[0].addEventListener(
-            'change',
+            'keyup',
             function () {
-                self.addItem(this.value);
-                this.value = '';
+                if (event.keyCode == 13) {
+                    self.addItem(this.value);
+                }
+            },
+            false
+        );
+
+        this.container.getElementsByClassName('todo-list-item__add')[0].addEventListener(
+            'click',
+            function () {
+                self.addItem(self.container.getElementsByClassName('todo-list-new-item-title')[0].value);
             },
             false
         );
@@ -119,6 +128,8 @@ List.prototype = {
             itemNode.setAttribute('data-index', index);
             this.container.insertBefore(itemNode, this.footer);
             this.writeData();
+
+            this.container.getElementsByClassName('todo-list-new-item-title')[0].value = '';
         }
     },
 
