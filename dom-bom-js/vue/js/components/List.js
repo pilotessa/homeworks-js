@@ -106,16 +106,25 @@ Vue.component('List', {
             this.saveData();
         },
 
-        saveData: function() {
+        applyFilter: function () {
+            if (this.filterCurrent) {
+                window.location.hash = '#' + this.filterCurrent;
+            } else {
+                history.replaceState({}, document.title, ".");
+            }
+        },
+
+        saveData: function () {
             localStorage.setItem(this.key, JSON.stringify(this.items));
         },
 
-        loadData: function() {
+        loadData: function () {
             this.items = JSON.parse(localStorage.getItem(this.key)) || [];
         }
     },
 
     created: function () {
+        this.filterCurrent = window.location.hash.replace('#', '');
         this.loadData();
     },
 
@@ -150,7 +159,7 @@ Vue.component('List', {
                     <option value="complete">Mark as complete</option>
                     <option value="active">Mark as active</option>
                 </select>
-                <select v-model="filterCurrent" class="todo-list-filter form-control input-sm">
+                <select v-model="filterCurrent" @change="applyFilter" class="todo-list-filter form-control input-sm">
                     <option value="">Show all</option>
                     <option value="active">Show active</option>
                     <option value="complete">Show complete</option>
