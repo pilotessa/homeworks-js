@@ -153,7 +153,7 @@ Vue.component('List', {
             </li>
             <li v-show="items.length" class="todo-list-footer list-group-item active form-inline">
                 With selected:
-                <select v-model="actionCurrent" @change="doAction" class="todo-list-mass-update form-control input-sm">
+                <select v-model="actionCurrent" @change="doAction" class="todo-list-batch-update form-control input-sm">
                     <option value="">Choose action</option>
                     <option value="delete">Delete</option>
                     <option value="complete">Mark as complete</option>
