@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Основы | JavaScript Homeworks</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+    <link href="../assets/css/main.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li><a href="../index.html">JavaScript Homeworks</a></li>
+        <li class="active">Основы JavaScript</li>
+    </ol>
+
+    <header class="page-header">
+        <h1>Регулярные выражения</h1>
+    </header>
+
+    <p class="alert alert-info">
+        При выполнении данного задания результат выводится в консоль (с помощью console.log).
+    </p>
+
+    <p class="lead">Текст к заданиям:</p>
+
+    <pre></pre>
+
+    <br>
+
+    <div class="well">
+        <p>1. Найти все Lorem Ipsum</p>
+        <code>/Lorem Ipsum/g</code>
+        <br>
+        <br>
+        <button type="button" class="btn btn-success task-runner" data-task="task1">Запустить</button>
+    </div>
+
+    <div class="well">
+        <p>2. Найти первый Lorem Ipsum в тексте</p>
+        <code>/Lorem Ipsum/</code>
+        <br>
+        <br>
+        <button type="button" class="btn btn-success task-runner" data-task="task2">Запустить</button>
+    </div>
+
+    <div class="well">
+        <p>3. Найти последний Lorem Ipsum в тексте</p>
+        <code>/Lorem Ipsum(?![\s\S]*Lorem Ipsum)/</code>
+        <br>
+        <br>
+        <button type="button" class="btn btn-success task-runner" data-task="task3">Запустить</button>
+    </div>
+
+    <div class="well">
+        <p>4. Найти все числа в тексте</p>
+        <code>/\d+/g</code>
+        <br>
+        <br>
+        <button type="button" class="btn btn-success task-runner" data-task="task4">Запустить</button>
+    </div>
+
+    <div class="well">
+        <p>5. Найти все числа, у которых последних 2 символа - нули</p>
+        <code>/\d*[1-9]0{2}/g</code>
+        <br>
+        <br>
+        <button type="button" class="btn btn-success task-runner" data-task="task5">Запустить</button>
+    </div>
+
+    <div class="well">
+        <p>6. Найти все числа, у которых минимум 2 нуля в конце</p>
+        <code>/\d+0{2}/g</code>
+        <br>
+        <br>
+        <button type="button" class="btn btn-success task-runner" data-task="task6">Запустить</button>
+    </div>
+
+    <div class="well">
+        <p>7. Найти весь текст, который окружен Lorem Ipsum с двух сторон</p>
+        <code>/(?=Lorem Ipsum)[\s\S]+?(?=Lorem Ipsum)/g</code>
+        <br>
+        <br>
+        <button type="button" class="btn btn-success task-runner" data-task="task7">Запустить</button>
+    </div>
+
+    <div class="well">
+        <p>8. Найти первых 3 символа в начале каждого параграфа.</p>
+        <code>/^.{3}/gm</code>
+        <br>
+        <br>
+        <button type="button" class="btn btn-success task-runner" data-task="task8">Запустить</button>
+    </div>
+
+    <div class="well form-inline">
+        <p>Написать регулярное выражение для валидации телефона в формате +38 (0XX) XXX-XX-XX, где X - некоторое число</p>
+        <code>/^\+38 \(0\d{2}\) \d{3}-\d{2}-\d{2}$/</code>
+        <br>
+        <br>
+        <div class="form-group">
+            <input type="text" id="task9Input" class="form-control">
+            <button type="button" class="btn btn-success task-runner" data-task="task9">Запустить</button>
+        </div>
+    </div>
+
+    <div class="well form-inline">
+        <p>Написать регулярное выражение для валидации email’а</p>
+        <code>/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/</code>
+        <br>
+        <br>
+        <div class="form-group">
+            <input type="text" id="task10Input" class="form-control">
+            <button type="button" class="btn btn-success task-runner" data-task="task10">Запустить</button>
+        </div>
+    </div>
+
+    <div class="well form-inline">
+        <p>Написать регулярное выражение для валидации пароля, который соответствует требованиям:</p>
+        <ul>
+            <li>длина минимум 6 символов</li>
+            <li>содержит минимум 1 заглавную букву</li>
+            <li>содержит минимум 1 прописную букву</li>
+            <li>содержит минимум 1 цифру</li>
+        </ul>
+        <code>/(?=.*[a-z]+)(?=.*[A-Z]+)(?=.*\d+).{6,}/</code>
+        <br>
+        <br>
+        <div class="form-group">
+            <input type="text" id="task11Input" class="form-control">
+            <button type="button" class="btn btn-success task-runner" data-task="task11">Запустить</button>
+        </div>
+    </div>
+
+    <footer>
+        <hr>
+        <p>&copy; 2016-2017 <a href="http://helene.com.ua" target="_blank">Елена Мухина</a></p>
+    </footer>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+<script src="js/tasks.js"></script>
+
+</body>
+</html>

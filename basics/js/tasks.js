@@ -479,7 +479,7 @@ function showOpacity(str) {
 
 // Bind functionality
 $(function () {
-    $(".task-runner").click(function () {
+    $('.task-runner').click(function () {
         window[$(this).data('task')]();
         return false;
     });
