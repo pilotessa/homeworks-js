@@ -3,7 +3,16 @@ body {
     min-width: 480px;
 }
 
-.row-list {
+.wrapper {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.wrapper.app-loaded {
+    opacity: 1;
+}
+
+.list {
     display: flex;
     flex-wrap: wrap;
 
@@ -17,7 +26,6 @@ body {
         .thumbnail {
             flex-grow: 1;
             height: 100%;
-            text-align: center;
             transition: transform .2s, box-shadow .3s;
 
             &:hover,

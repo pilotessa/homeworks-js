@@ -7,15 +7,28 @@ body {
 
 /* line 6, src/sass/layout.scss */
 
-.row-list {
+.wrapper {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+/* line 11, src/sass/layout.scss */
+
+.wrapper.app-loaded {
+  opacity: 1;
+}
+
+/* line 15, src/sass/layout.scss */
+
+.list {
   display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
 }
 
-/* line 10, src/sass/layout.scss */
+/* line 19, src/sass/layout.scss */
 
-.row-list > [class^='col-'] {
+.list > [class^='col-'] {
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: vertical;
@@ -28,22 +41,21 @@ body {
   align-content: stretch;
 }
 
-/* line 17, src/sass/layout.scss */
+/* line 26, src/sass/layout.scss */
 
-.row-list > [class^='col-'] .thumbnail {
+.list > [class^='col-'] .thumbnail {
   -webkit-box-flex: 1;
   flex-grow: 1;
   height: 100%;
-  text-align: center;
   transition: box-shadow .3s, -webkit-transform .2s;
   transition: transform .2s, box-shadow .3s;
   transition: transform .2s, box-shadow .3s, -webkit-transform .2s;
 }
 
-/* line 23, src/sass/layout.scss */
+/* line 31, src/sass/layout.scss */
 
-.row-list > [class^='col-'] .thumbnail:hover,
-.row-list > [class^='col-'] .thumbnail:focus {
+.list > [class^='col-'] .thumbnail:hover,
+.list > [class^='col-'] .thumbnail:focus {
   z-index: 1;
   text-decoration: none;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
@@ -51,9 +63,14 @@ body {
   transform: scale(1.05);
 }
 
-/* line 33, src/sass/layout.scss */
+/* line 41, src/sass/layout.scss */
 
-.row-list:before,
-.row-list:after {
+.list:before,
+.list:after {
   content: normal;
+}
+/* line 2, src/sass/product.scss */
+
+.product .product-inner {
+  padding: 15px;
 }

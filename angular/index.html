@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +7,8 @@
     <title>Angular sample application</title>
 
     <link href="assets/css/main.min.css" rel="stylesheet">
+
+    <script src="assets/js/main.js" defer></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -16,10 +18,11 @@
     <![endif]-->
 </head>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -31,13 +34,14 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Categories <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Books</a></li>
-                        <li><a href="#">Games</a></li>
-                        <li><a href="#">Music</a></li>
-                        <li><a href="#">Movies</a></li>
-                        <li><a href="#">Toys</a></li>
+                        <li><a href="#">Coffee</a></li>
+                        <li><a href="#">Sweets</a></li>
+                        <li><a href="#">Tea</a></li>
+                        <li><a href="#">Water, juice, drinks</a></li>
+                        <li><a href="#">Wine</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Help</a></li>
@@ -58,158 +62,72 @@
 
 <div class="container">
     <div class="jumbotron">
-        <h1><small>Домашнее задание:</small></h1>
+        <h1>
+            <small>Домашнее задание:</small>
+        </h1>
 
         <ul>
             <li>Сделать свою страничку со списком продуктов (каталог).</li>
-            <li>Там должны быть картинки и кнопки (например, кнопка "купить"), которые подчиняются какой-то логике (показывать/не показывать)</li>
+            <li>Там должны быть картинки и кнопки (например, кнопка "купить"), которые подчиняются какой-то логике
+                (показывать/не показывать)
+            </li>
             <li>Написать свои стили (желательно на препроцессоре), чтоб все смотрелось вменяемо.</li>
             <li>
                 Контроллеров должно быть 2: PageController и ProductsController. Первый должен руководить кнопками:
                 <ul>
                     <li>для переключения вида: список/плитка.</li>
-                    <li>сортировки: по имени/цене по возрастанию/убыванию. (пока что сделать это кнопками с ng-click. http://take.ms/Av2A4)</li>
+                    <li>сортировки: по имени/цене по возрастанию/убыванию. (пока что сделать это кнопками с ng-click.
+                        http://take.ms/Av2A4)
+                    </li>
                 </ul>
             </li>
             <li>Выложить все на github и подключить gh pages.</li>
         </ul>
 
-        <p><a class="btn btn-primary btn-lg" href="../" role="button">Все домашние задания <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a></p>
+        <p><a class="btn btn-primary btn-lg" href="../" role="button">Все домашние задания <span
+                class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a></p>
     </div>
 
-    <h2>All Products</h2>
+    <div class="wrapper" ng-class="{'app-loaded': true}" ng-controller="PageController as page">
+        <h2>All Products</h2>
 
-    <p>
-        <button type="button" class="btn btn-primary" aria-label="Table">
-            price <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
-        </button>
-        <button type="button" class="btn btn-default" aria-label="Table">
-            price <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
-        </button>
-        <button type="button" class="btn btn-default" aria-label="Table">
-            name <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
-        </button>
-        <button type="button" class="btn btn-default" aria-label="Table">
-            name <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
-        </button>
-        <button type="button" class="btn btn-primary" aria-label="Table">
-            <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
-        </button>
-        <button type="button" class="btn btn-default" aria-label="List">
-            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-        </button>
-    </p>
+        <p>
+            <button ng-click="page.order = page.ORDER_PRICE_ASC" type="button" class="btn" ng-class="{ 'btn-primary': page.order == page.ORDER_PRICE_ASC }">
+                price <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+            </button>
+            <button ng-click="page.order = page.ORDER_PRICE_DESC" type="button" class="btn" ng-class="{ 'btn-primary': page.order == page.ORDER_PRICE_DESC }">
+                price <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+            </button>
+            <button ng-click="page.order = page.ORDER_NAME_ASC" type="button" class="btn" ng-class="{ 'btn-primary': page.order == page.ORDER_NAME_ASC }">
+                name <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+            </button>
+            <button ng-click="page.order = page.ORDER_NAME_DESC" type="button" class="btn" ng-class="{ 'btn-primary': page.order == page.ORDER_NAME_DESC }">
+                name <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+            </button>
+            <button ng-click="page.output = page.OUTPUT_TABLE" type="button" class="btn" ng-class="{ 'btn-primary': page.output == page.OUTPUT_TABLE }">
+                <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+            </button>
+            <button ng-click="page.output = page.OUTPUT_LIST" type="button" class="btn" ng-class="{ 'btn-primary': page.output == page.OUTPUT_LIST }">
+                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+            </button>
+        </p>
 
-    <hr>
+        <hr>
 
-    <div class="row row-list">
-        <div class="col-xs-6 col-md-3">
-            <a href="#" class="thumbnail text-center">
-                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
-                <h3>Title</h3>
-                <button type="button" class="btn btn-success" aria-label="List">
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
-                </button>
-            </a>
-        </div>
-        <div class="col-xs-6 col-md-3">
-            <a href="#" class="thumbnail text-center">
-                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
-                <h3>Title</h3>
-                <button type="button" class="btn btn-success" aria-label="List">
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
-                </button>
-            </a>
-        </div>
-        <div class="col-xs-6 col-md-3">
-            <a href="#" class="thumbnail text-center">
-                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
-                <h3>Title</h3>
-                <button type="button" class="btn btn-success" aria-label="List">
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
-                </button>
-            </a>
-        </div>
-        <div class="col-xs-6 col-md-3">
-            <a href="#" class="thumbnail text-center">
-                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
-                <h3>Title</h3>
-                <button type="button" class="btn btn-success" aria-label="List">
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
-                </button>
-            </a>
-        </div>
-        <div class="col-xs-6 col-md-3">
-            <a href="#" class="thumbnail text-center">
-                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
-                <h3>Title</h3>
-                <button type="button" class="btn btn-success" aria-label="List">
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
-                </button>
-            </a>
-        </div>
-        <div class="col-xs-6 col-md-3">
-            <a href="#" class="thumbnail text-center">
-                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
-                <h3>Title</h3>
-                <button type="button" class="btn btn-success" aria-label="List">
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
-                </button>
-            </a>
-        </div>
-        <div class="col-xs-6 col-md-3">
-            <a href="#" class="thumbnail text-center">
-                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
-                <h3>Title</h3>
-                <button type="button" class="btn btn-success" aria-label="List">
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
-                </button>
-            </a>
-        </div>
-        <div class="col-xs-6 col-md-3">
-            <a href="#" class="thumbnail text-center">
-                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
-                <h3>Title</h3>
-                <button type="button" class="btn btn-success" aria-label="List">
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
-                </button>
-            </a>
-        </div>
-        <div class="col-xs-6 col-md-3">
-            <a href="#" class="thumbnail text-center">
-                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
-                <h3>Title</h3>
-                <button type="button" class="btn btn-success" aria-label="List">
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
-                </button>
-            </a>
-        </div>
-        <div class="col-xs-6 col-md-3">
-            <a href="#" class="thumbnail text-center">
-                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
-                <h3>Title</h3>
-                <button type="button" class="btn btn-success" aria-label="List">
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
-                </button>
-            </a>
-        </div>
-        <div class="col-xs-6 col-md-3">
-            <a href="#" class="thumbnail text-center">
-                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
-                <h3>Title</h3>
-                <button type="button" class="btn btn-success" aria-label="List">
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
-                </button>
-            </a>
-        </div>
-        <div class="col-xs-6 col-md-3">
-            <a href="#" class="thumbnail text-center">
-                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
-                <h3>Title</h3>
-                <button type="button" class="btn btn-success" aria-label="List">
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
-                </button>
-            </a>
+        <div class="row list" ng-controller="ProductsController as store">
+            <div class="col-xs-6 col-md-3" ng-repeat="product in store.products">
+                <a href="#" class="thumbnail product">
+                    <img ng-src="{{ product.image }}" alt="{{ product.name }}">
+                    <div class="product-inner">
+                        <h3>{{ product.name | capitalize }}</h3>
+                        <h4>{{ product.price | currency }}</h4>
+                        <p>{{ product.description }}</p>
+                        <button ng-show="product.stock" ng-click="$event.preventDefault(); $event.stopPropagation();" type="button" class="btn btn-success">
+                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
+                        </button>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -219,7 +137,5 @@
         <p>© 2017 <a href="http://helene.com.ua" target="_blank">Elena Mukhina</a></p>
     </footer>
 </div>
-
-<script src="assets/js/main.js"></script>
 </body>
 </html>
