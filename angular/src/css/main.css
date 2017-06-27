@@ -1,0 +1,59 @@
+/* line 1, src/sass/layout.scss */
+
+html,
+body {
+  min-width: 480px;
+}
+
+/* line 6, src/sass/layout.scss */
+
+.row-list {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* line 10, src/sass/layout.scss */
+
+.row-list > [class^='col-'] {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: stretch;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+/* line 17, src/sass/layout.scss */
+
+.row-list > [class^='col-'] .thumbnail {
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  height: 100%;
+  text-align: center;
+  transition: box-shadow .3s, -webkit-transform .2s;
+  transition: transform .2s, box-shadow .3s;
+  transition: transform .2s, box-shadow .3s, -webkit-transform .2s;
+}
+
+/* line 23, src/sass/layout.scss */
+
+.row-list > [class^='col-'] .thumbnail:hover,
+.row-list > [class^='col-'] .thumbnail:focus {
+  z-index: 1;
+  text-decoration: none;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+/* line 33, src/sass/layout.scss */
+
+.row-list:before,
+.row-list:after {
+  content: normal;
+}

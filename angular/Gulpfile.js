@@ -4,9 +4,10 @@ var autoprefixer = require('gulp-autoprefixer');
 var concat = require('gulp-concat');
 var concatCss = require('gulp-concat-css');
 var minifyCss = require('gulp-minify-css');
+var runSequence = require('run-sequence');
 
 gulp.task('sass', function () {
-    gulp.src('./src/sass/**/*.scss')
+    return gulp.src('./src/sass/**/*.scss')
         .pipe(sass({sourceComments: 'map'}))
         .pipe(autoprefixer({
             browsers: ['> 5%'],
@@ -27,7 +28,7 @@ gulp.task('css', function() {
 });
 
 gulp.task('js', function () {
-    gulp.src([
+    return gulp.src([
             './node_modules/jquery/dist/jquery.min.js',
             './node_modules/bootstrap/dist/js/bootstrap.min.js',
             './src/js/**/*.{js,json}'
@@ -37,10 +38,20 @@ gulp.task('js', function () {
 });
 
 gulp.task('copy', function() {
-    gulp.src('./src/fonts/**/*.*')
+    gulp.src([
+            './node_modules/bootstrap/dist/fonts/**/*.*',
+            './src/fonts/**/*.*'
+        ])
         .pipe(gulp.dest('./assets/fonts'));
     gulp.src('./src/images/**/*.*')
         .pipe(gulp.dest('./assets/images'));
 });
 
-gulp.task('default', ['sass', 'css', 'js', 'copy']);
+gulp.task('default', function() {
+    runSequence(
+        'sass',
+        'css',
+        'js',
+        'copy'
+    );
+});

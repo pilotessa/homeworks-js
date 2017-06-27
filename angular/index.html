@@ -16,7 +16,209 @@
     <![endif]-->
 </head>
 <body>
-<h1>Hello, world!</h1>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Books</a></li>
+                        <li><a href="#">Games</a></li>
+                        <li><a href="#">Music</a></li>
+                        <li><a href="#">Movies</a></li>
+                        <li><a href="#">Toys</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Help</a></li>
+            </ul>
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Cart</a></li>
+                <li><a href="#">Sign in</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1><small>Домашнее задание:</small></h1>
+
+        <ul>
+            <li>Сделать свою страничку со списком продуктов (каталог).</li>
+            <li>Там должны быть картинки и кнопки (например, кнопка "купить"), которые подчиняются какой-то логике (показывать/не показывать)</li>
+            <li>Написать свои стили (желательно на препроцессоре), чтоб все смотрелось вменяемо.</li>
+            <li>
+                Контроллеров должно быть 2: PageController и ProductsController. Первый должен руководить кнопками:
+                <ul>
+                    <li>для переключения вида: список/плитка.</li>
+                    <li>сортировки: по имени/цене по возрастанию/убыванию. (пока что сделать это кнопками с ng-click. http://take.ms/Av2A4)</li>
+                </ul>
+            </li>
+            <li>Выложить все на github и подключить gh pages.</li>
+        </ul>
+
+        <p><a class="btn btn-primary btn-lg" href="../" role="button">Все домашние задания <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a></p>
+    </div>
+
+    <h2>All Products</h2>
+
+    <p>
+        <button type="button" class="btn btn-primary" aria-label="Table">
+            price <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="btn btn-default" aria-label="Table">
+            price <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="btn btn-default" aria-label="Table">
+            name <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="btn btn-default" aria-label="Table">
+            name <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="btn btn-primary" aria-label="Table">
+            <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="btn btn-default" aria-label="List">
+            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+        </button>
+    </p>
+
+    <hr>
+
+    <div class="row row-list">
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail text-center">
+                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
+                <h3>Title</h3>
+                <button type="button" class="btn btn-success" aria-label="List">
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
+                </button>
+            </a>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail text-center">
+                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
+                <h3>Title</h3>
+                <button type="button" class="btn btn-success" aria-label="List">
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
+                </button>
+            </a>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail text-center">
+                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
+                <h3>Title</h3>
+                <button type="button" class="btn btn-success" aria-label="List">
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
+                </button>
+            </a>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail text-center">
+                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
+                <h3>Title</h3>
+                <button type="button" class="btn btn-success" aria-label="List">
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
+                </button>
+            </a>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail text-center">
+                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
+                <h3>Title</h3>
+                <button type="button" class="btn btn-success" aria-label="List">
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
+                </button>
+            </a>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail text-center">
+                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
+                <h3>Title</h3>
+                <button type="button" class="btn btn-success" aria-label="List">
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
+                </button>
+            </a>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail text-center">
+                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
+                <h3>Title</h3>
+                <button type="button" class="btn btn-success" aria-label="List">
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
+                </button>
+            </a>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail text-center">
+                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
+                <h3>Title</h3>
+                <button type="button" class="btn btn-success" aria-label="List">
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
+                </button>
+            </a>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail text-center">
+                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
+                <h3>Title</h3>
+                <button type="button" class="btn btn-success" aria-label="List">
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
+                </button>
+            </a>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail text-center">
+                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
+                <h3>Title</h3>
+                <button type="button" class="btn btn-success" aria-label="List">
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
+                </button>
+            </a>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail text-center">
+                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
+                <h3>Title</h3>
+                <button type="button" class="btn btn-success" aria-label="List">
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
+                </button>
+            </a>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail text-center">
+                <img src="http://lorempixel.com/768/768/?62172" alt="Qui et id animi commodi consequatur nesciunt deserunt">
+                <h3>Title</h3>
+                <button type="button" class="btn btn-success" aria-label="List">
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <hr>
+
+    <footer>
+        <p>© 2017 <a href="http://helene.com.ua" target="_blank">Elena Mukhina</a></p>
+    </footer>
+</div>
 
 <script src="assets/js/main.js"></script>
 </body>
