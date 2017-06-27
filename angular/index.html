@@ -92,37 +92,44 @@
         <h2>All Products</h2>
 
         <p>
-            <button ng-click="page.order = page.ORDER_PRICE_ASC" type="button" class="btn" ng-class="{ 'btn-primary': page.order == page.ORDER_PRICE_ASC }">
+            <button ng-click="page.order = page.ORDER_PRICE_ASC" type="button" class="btn"
+                    ng-class="page.order == page.ORDER_PRICE_ASC ? 'btn-primary' : 'btn-default'">
                 price <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
             </button>
-            <button ng-click="page.order = page.ORDER_PRICE_DESC" type="button" class="btn" ng-class="{ 'btn-primary': page.order == page.ORDER_PRICE_DESC }">
+            <button ng-click="page.order = page.ORDER_PRICE_DESC" type="button" class="btn"
+                    ng-class="page.order == page.ORDER_PRICE_DESC ? 'btn-primary' : 'btn-default'">
                 price <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
             </button>
-            <button ng-click="page.order = page.ORDER_NAME_ASC" type="button" class="btn" ng-class="{ 'btn-primary': page.order == page.ORDER_NAME_ASC }">
+            <button ng-click="page.order = page.ORDER_NAME_ASC" type="button" class="btn"
+                    ng-class="page.order == page.ORDER_NAME_ASC ? 'btn-primary' : 'btn-default'">
                 name <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
             </button>
-            <button ng-click="page.order = page.ORDER_NAME_DESC" type="button" class="btn" ng-class="{ 'btn-primary': page.order == page.ORDER_NAME_DESC }">
+            <button ng-click="page.order = page.ORDER_NAME_DESC" type="button" class="btn"
+                    ng-class="page.order == page.ORDER_NAME_DESC ? 'btn-primary' : 'btn-default'">
                 name <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
             </button>
-            <button ng-click="page.output = page.OUTPUT_TABLE" type="button" class="btn" ng-class="{ 'btn-primary': page.output == page.OUTPUT_TABLE }">
+            <button ng-click="page.output = page.OUTPUT_TABLE" type="button" class="btn"
+                    ng-class="page.output == page.OUTPUT_TABLE ? 'btn-primary' : 'btn-default'">
                 <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
             </button>
-            <button ng-click="page.output = page.OUTPUT_LIST" type="button" class="btn" ng-class="{ 'btn-primary': page.output == page.OUTPUT_LIST }">
+            <button ng-click="page.output = page.OUTPUT_LIST" type="button" class="btn"
+                    ng-class="page.output == page.OUTPUT_LIST ? 'btn-primary' : 'btn-default'">
                 <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
             </button>
         </p>
 
         <hr>
 
-        <div class="row list" ng-controller="ProductsController as store">
-            <div class="col-xs-6 col-md-3" ng-repeat="product in store.products">
+        <div class="row" ng-class="page.getOutputClass()" ng-controller="ProductsController as store">
+            <div class="col-xs-6 col-md-3" ng-repeat="product in store.products | orderBy:page.getOrderBy()">
                 <a href="#" class="thumbnail product">
                     <img ng-src="{{ product.image }}" alt="{{ product.name }}">
                     <div class="product-inner">
                         <h3>{{ product.name | capitalize }}</h3>
                         <h4>{{ product.price | currency }}</h4>
                         <p>{{ product.description }}</p>
-                        <button ng-show="product.stock" ng-click="$event.preventDefault(); $event.stopPropagation();" type="button" class="btn btn-success">
+                        <button ng-show="product.stock" ng-click="$event.preventDefault(); $event.stopPropagation();"
+                                type="button" class="btn btn-success">
                             <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
                         </button>
                     </div>
@@ -134,7 +141,7 @@
     <hr>
 
     <footer>
-        <p>© 2017 <a href="http://helene.com.ua" target="_blank">Elena Mukhina</a></p>
+        <p>&copy; 2017 <a href="http://helene.com.ua" target="_blank">Elena Mukhina</a></p>
     </footer>
 </div>
 </body>

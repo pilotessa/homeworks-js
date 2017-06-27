@@ -12,11 +12,11 @@ body {
     opacity: 1;
 }
 
-.list {
+.row-table {
     display: flex;
     flex-wrap: wrap;
 
-    &>[class^='col-'] {
+    & > [class^='col-'] {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -41,5 +41,33 @@ body {
     &:before,
     &:after {
         content: normal;
+    }
+}
+
+.row-list {
+    & > [class^='col-'] {
+        width: 100%;
+
+        .thumbnail {
+            transition: transform .2s, box-shadow .3s;
+
+            &:hover,
+            &:focus {
+                z-index: 1;
+                text-decoration: none;
+                box-shadow: 0 30px 60px rgba(0, 0, 0, .25);
+                transform: scale(1.02);
+            }
+        }
+
+        &:hover,
+        &:focus {
+            z-index: 1;
+
+            .thumbnail {
+                box-shadow: 0 30px 60px rgba(0, 0, 0, .25);
+                transform: scale(1.02);
+            }
+        }
     }
 }

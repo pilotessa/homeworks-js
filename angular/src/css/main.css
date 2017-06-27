@@ -20,7 +20,7 @@ body {
 
 /* line 15, src/sass/layout.scss */
 
-.list {
+.row-table {
   display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
@@ -28,7 +28,7 @@ body {
 
 /* line 19, src/sass/layout.scss */
 
-.list > [class^='col-'] {
+.row-table > [class^='col-'] {
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: vertical;
@@ -43,7 +43,7 @@ body {
 
 /* line 26, src/sass/layout.scss */
 
-.list > [class^='col-'] .thumbnail {
+.row-table > [class^='col-'] .thumbnail {
   -webkit-box-flex: 1;
   flex-grow: 1;
   height: 100%;
@@ -54,8 +54,8 @@ body {
 
 /* line 31, src/sass/layout.scss */
 
-.list > [class^='col-'] .thumbnail:hover,
-.list > [class^='col-'] .thumbnail:focus {
+.row-table > [class^='col-'] .thumbnail:hover,
+.row-table > [class^='col-'] .thumbnail:focus {
   z-index: 1;
   text-decoration: none;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
@@ -65,12 +65,91 @@ body {
 
 /* line 41, src/sass/layout.scss */
 
-.list:before,
-.list:after {
+.row-table:before,
+.row-table:after {
   content: normal;
 }
-/* line 2, src/sass/product.scss */
 
-.product .product-inner {
+/* line 48, src/sass/layout.scss */
+
+.row-list > [class^='col-'] {
+  width: 100%;
+}
+
+/* line 51, src/sass/layout.scss */
+
+.row-list > [class^='col-'] .thumbnail {
+  transition: box-shadow .3s, -webkit-transform .2s;
+  transition: transform .2s, box-shadow .3s;
+  transition: transform .2s, box-shadow .3s, -webkit-transform .2s;
+}
+
+/* line 54, src/sass/layout.scss */
+
+.row-list > [class^='col-'] .thumbnail:hover,
+.row-list > [class^='col-'] .thumbnail:focus {
+  z-index: 1;
+  text-decoration: none;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+  -webkit-transform: scale(1.02);
+  transform: scale(1.02);
+}
+
+/* line 63, src/sass/layout.scss */
+
+.row-list > [class^='col-']:hover,
+.row-list > [class^='col-']:focus {
+  z-index: 1;
+}
+
+/* line 67, src/sass/layout.scss */
+
+.row-list > [class^='col-']:hover .thumbnail,
+.row-list > [class^='col-']:focus .thumbnail {
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+  -webkit-transform: scale(1.02);
+  transform: scale(1.02);
+}
+/* line 3, src/sass/product.scss */
+
+.row-table .product .product-inner {
   padding: 15px;
+}
+
+/* line 10, src/sass/product.scss */
+
+.row-list .product {
+  overflow: hidden;
+}
+
+/* line 13, src/sass/product.scss */
+
+.row-list .product img {
+  float: left;
+  width: 50%;
+  padding-right: 15px;
+}
+
+/* line 19, src/sass/product.scss */
+
+.row-list .product .product-inner {
+  float: right;
+  width: 50%;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 25, src/sass/product.scss */
+
+  .row-list .product img {
+    float: left;
+    width: 25%;
+    padding-right: 15px;
+  }
+
+  /* line 31, src/sass/product.scss */
+
+  .row-list .product .product-inner {
+    float: right;
+    width: 75%;
+  }
 }
