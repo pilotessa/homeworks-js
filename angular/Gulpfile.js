@@ -3,7 +3,7 @@ var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var concat = require('gulp-concat');
 var concatCss = require('gulp-concat-css');
-var minifyCss = require('gulp-minify-css');
+var cleanCss = require('gulp-clean-css');
 var runSequence = require('run-sequence');
 
 gulp.task('sass', function () {
@@ -23,7 +23,7 @@ gulp.task('css', function() {
             './src/css/main.css'
         ])
         .pipe(concat('./assets/css/main.min.css'))
-        .pipe(minifyCss())
+        .pipe(cleanCss())
         .pipe(gulp.dest('./'));
 });
 
